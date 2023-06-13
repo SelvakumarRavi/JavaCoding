@@ -1,0 +1,93 @@
+select * from emp;
+ select distinct(job) from emp;
+ select * from emp where job = 'MANAGER';
+ select * from emp where HIREDATE<'01-01-1981';
+ select EMPNO,ENAME,JOB,HIREDATE,to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY') as experience from emp where JOB='MANAGER';
+ 
+ select EMPNO,ENAME,SAL,to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY') as experience from emp where MGR=7698;
+ 
+select * from emp where COMM>SAL;
+
+select ENAME,to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY') as experience from emp where (SAL/30)>100; 
+
+select * from emp where DEPTNO=10 or DEPTNO=20;
+
+select * from emp where MGR is not null;
+
+select * from emp where JOB='CLERK' and DEPTNO=20;
+
+select * from emp where ENAME='SMITH';
+
+select Empno, Ename, Deptno from emp;
+
+select Empno,Deptno from emp;
+
+select distinct(DEPTNO) from emp;
+
+select ENAME,SAL,((SAL*0.20)+SAL) as "increment" from emp where ((SAL*0.20)+SAL)>3000;
+
+select ENAME,to_char('$'||to_char((SAL*0.15)+SAL))as SALARY from emp;
+
+select ENAME || ' and '|| JOB from emp;
+
+select Empno, Ename, Sal from emp where JOB='MANAGER';
+
+select * from emp where &s*&m > &l;
+
+select empno, count(empno) from emp group by empno having count(empno) > 1;
+
+select Empno,sal,comm from emp;
+
+select distinct(deptno),job from emp;
+
+select * from emp where ename ='BLAKE';
+
+select * from emp where job='CLERK';
+
+select * from emp where HIREDATE = '01-05-1981';
+
+select * from emp where sal<3500;
+
+select Empno, Ename, Sal from emp where HIREDATE < '01-04-1981';
+
+select ename,to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY') as experience from emp where (to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY'))>10;
+
+select * from emp where job='MANAGER';
+
+select * from emp where job='CLERK' and (to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY'))>8;
+
+select Empno, Ename, Sal, Job,deptno from emp where (sal*12)<34000 and comm<sal and job ='SALESMAN' and deptno=20;
+
+select * from emp where job='SALESMAN' and comm is not null;
+
+select * from emp where deptno = 30 and comm>sal;
+
+SELECT * FROM emp where ename is not null and rownum between 1 and 5;
+
+select  empno, ename, job, sal from emp;
+
+SELECT DISTINCT job, deptno FROM emp;
+
+select * from emp where ename='MILLER';
+
+SELECT * from emp where deptno = 10;
+
+SELECT * from emp where job = 'SALESMAN';
+
+select * from emp where HIREDATE < '01-01-1984';
+
+select * from emp where Sal>2500;
+
+select * from emp where HIREDATE >= '01-04-1982';
+
+select empno, ename, sal,(sal)/31 as "Daily sal" from emp;
+
+select empno,ename,sal,to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY') as experience from emp where job='ANALYST';
+
+select ENAME,to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY') as experience from emp where to_char(sysdate,'YYYY')-to_char(HIREDATE,'YYYY')>6.5;
+
+select * from emp where HIREDATE<'31-12-1981' and HIREDATE > '01-06-1981';
+
+select * from emp where deptno=10 and job='CLERK';
+
+select * from emp where HIREDATE<'01-01-1985' and sal > 3000;
