@@ -1,0 +1,99 @@
+package com.dal.view;
+
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import com.dal.controller.EmployeeController;
+//import com.dal.model.Employee;
+import com.dal.controller.EmployeeInterface;
+import com.dal.exception.UserNotFoundException;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		System.out.println("Welcome to EMS :)");
+		EmployeeInterface ec = new EmployeeController();
+		System.out.println("Please Login:");
+		Scanner sc = new Scanner(System.in);
+		String ch=null;
+	
+		try {
+			String un = null;
+			String pwd = null;
+
+			InputStreamReader isr = new InputStreamReader(System.in);
+			BufferedReader br = new BufferedReader(isr);
+			System.out.println("Enter Username");
+			un = br.readLine();
+			System.out.println("Enter Password");
+			pwd = br.readLine();
+			System.out.println("Please wait...");
+			Thread.sleep(2000);
+			if (un.equals("selva") && pwd.equals("Selva@123")) {
+				System.out.println("Welcome " + un);
+				do {
+					
+					System.out.println("Enter your choice");
+					System.out.println("1. Add Employee");
+					System.out.println("2. View Employee");
+					System.out.println("3. Serialize Employee");
+					System.out.println("4. Deserialize Employee");
+					int choice = sc.nextInt();
+					switch (choice) {
+					case 1: {
+						ec.addEmployee();
+						break;
+					}
+
+					case 2: {
+						ec.viewEmployee();
+						break;
+					}
+					case 3: {
+						ec.serializee(ec.getEmplist());
+						break;
+					}
+					case 4: {
+						ec.deserializee("dedalus.txt");
+						break;
+					}
+					default: {
+						System.out.println("Enter a valid number");
+						break;
+					}
+					}
+					
+					System.out.println("Do u want to continue Y | y");
+					ch=sc.next();
+					
+					}while(ch.equals("Y") || ch.equals("y"));
+				
+			} else {
+				throw new UserNotFoundException();
+			}
+
+		}
+
+		catch (UserNotFoundException unf) {
+			
+			System.out.println("Enter valid credentials");
+			unf.printStackTrace();
+		}
+		catch(InterruptedException ipr) {
+			ipr.printStackTrace();
+		}
+		catch (Exception ae) {
+			System.out.println("IO");
+		} finally {
+			System.out.println("Finally .....");
+		}
+		
+		
+//		System.out.println("Thanks for using our system.");
+		System.exit(0);
+	}
+		
+}
+Footer
